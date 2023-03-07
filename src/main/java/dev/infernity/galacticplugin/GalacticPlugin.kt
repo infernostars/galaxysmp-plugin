@@ -17,7 +17,7 @@ class GalacticPlugin : JavaPlugin() {
     }
 
     override fun onDisable() {
-        // Plugin shutdown logic
+        Bukkit.getLogger().info("GalacticPlugin shutting down.")
     }
 
     companion object {
