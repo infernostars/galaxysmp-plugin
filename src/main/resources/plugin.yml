@@ -1,0 +1,4 @@
+name: GalacticPlugin
+version: '${project.version}'
+main: dev.infernity.galacticplugin.GalacticPlugin
+api-version: 1.19
