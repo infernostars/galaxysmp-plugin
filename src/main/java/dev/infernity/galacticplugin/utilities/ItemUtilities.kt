@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package dev.infernity.galacticplugin.utilities
 
 import com.destroystokyo.paper.profile.ProfileProperty
@@ -18,7 +20,7 @@ import java.util.*
 /**
  * Utilities relating to ItemStacks.
  */
-object itemUtilities {
+object ItemUtilities {
     /**
      * Create a player head with a base64 texture
      * @param base64 A base64-encoded string to get the head texture from.
@@ -127,35 +129,18 @@ object itemUtilities {
     ): ItemStack {
         var item = createHeadBase64(base64)
         item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("potionhead_flag"), "1")
-        item =
-            storeDataInItem(item, GalacticPlugin.createNamespacedKey("potionhead_effect"), potionEffect.name)
-        item = storeDataInItem(
-            item,
-            GalacticPlugin.createNamespacedKey("potionhead_duration"),
-            duration.toString()
-        )
-        item = storeDataInItem(
-            item,
-            GalacticPlugin.createNamespacedKey("potionhead_amplifier"),
-            amplifier.toString()
-        )
-        item = storeDataInItem(
-            item,
-            GalacticPlugin.createNamespacedKey("potionhead_hunger"),
-            hunger.toString()
-        )
-        item = storeDataInItem(
-            item,
-            GalacticPlugin.createNamespacedKey("potionhead_saturation"),
-            saturation.toString()
-        )
+        item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("potionhead_effect"), potionEffect.name)
+        item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("potionhead_duration"), duration.toString())
+        item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("potionhead_amplifier"), amplifier.toString())
+        item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("potionhead_hunger"), hunger.toString())
+        item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("potionhead_saturation"), saturation.toString())
         val itemMeta = item.itemMeta
         val durRoman: String? = try {
-            intUtilities.IntegerToRomanNumeral(amplifier + 1)
+            IntUtilities.integerToRomanNumeral(amplifier + 1)
         } catch (e: Exception) {
             "I"
         }
-        val lore = listOf(componentUtilities.getPotion(potionEffect).color(NamedTextColor.YELLOW)
+        val lore = listOf(Component.translatable(potionEffect.translationKey()).color(NamedTextColor.YELLOW)
             .append(Component.text(" $durRoman", NamedTextColor.YELLOW))
             .append(Component.text(" (" + duration/20f + " seconds", NamedTextColor.GRAY)),
             Component.text("(" + hunger / 2 + " hunger bars)", NamedTextColor.GRAY))
@@ -177,16 +162,8 @@ object itemUtilities {
     fun createFoodHead(name: Component?, base64: String, hunger: Int, saturation: Float): ItemStack {
         var item = createHeadBase64(base64)
         item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("foodhead_flag"), "1")
-        item = storeDataInItem(
-            item,
-            GalacticPlugin.createNamespacedKey("foodhead_hunger"),
-            hunger.toString()
-        )
-        item = storeDataInItem(
-            item,
-            GalacticPlugin.createNamespacedKey("foodhead_saturation"),
-            saturation.toString()
-        )
+        item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("foodhead_hunger"), hunger.toString())
+        item = storeDataInItem(item, GalacticPlugin.createNamespacedKey("foodhead_saturation"), saturation.toString())
         val itemMeta = item.itemMeta
         val lore = listOf(Component.text("(" + hunger / 2 + " hunger bars)", NamedTextColor.GRAY))
         itemMeta.lore(lore)

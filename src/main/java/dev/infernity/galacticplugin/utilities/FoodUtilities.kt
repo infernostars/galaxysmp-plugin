@@ -6,7 +6,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-object foodUtilities {
+object FoodUtilities {
     fun createFoods() {
         createFood(
             Component.text("Chocolate", NamedTextColor.WHITE),
@@ -18,9 +18,9 @@ object foodUtilities {
         )
     }
     private fun createFood(name: Component, base64: String, hunger: Int, saturation: Float, key: String, recipeItems: Array<ItemStack?>){
-        val food = itemUtilities.createFoodHead(name, base64, hunger, saturation)
+        val food = ItemUtilities.createFoodHead(name, base64, hunger, saturation)
         Bukkit.addRecipe(
-            itemUtilities.shapelessRecipeCreator(
+            ItemUtilities.shapelessRecipeCreator(
                 food,
                 key,
                 recipeItems

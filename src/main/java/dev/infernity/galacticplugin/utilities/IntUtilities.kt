@@ -1,8 +1,8 @@
 package dev.infernity.galacticplugin.utilities
 
-object intUtilities {
+object IntUtilities {
     @Throws(Exception::class)
-    fun IntegerToRomanNumeral(inp: Int): String {
+    fun integerToRomanNumeral(inp: Int): String {
         var input = inp
         if (input < 1 || input > 3999) throw Exception()
         var s = ""

@@ -1,6 +1,6 @@
 package dev.infernity.galacticplugin
 
-import dev.infernity.galacticplugin.utilities.foodUtilities
+import dev.infernity.galacticplugin.utilities.FoodUtilities
 import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
 import org.bukkit.plugin.java.JavaPlugin
@@ -10,7 +10,7 @@ class GalacticPlugin : JavaPlugin() {
 
     override fun onEnable() {
         plugin = this
-        foodUtilities.createFoods()
+        FoodUtilities.createFoods()
         server.pluginManager.registerEvents(PlayerInteractListener(), this)
         Bukkit.getLogger().info("GalacticPlugin loaded!")
 
